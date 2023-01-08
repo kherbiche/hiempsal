@@ -80,7 +80,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
 	</properties>
 	
 	 <dependencies>
@@ -102,6 +101,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
     </dependencies>
 
 
@@ -110,6 +114,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>    
+                	<mainClass>net.ats.hiempsal.Heimpsal</mainClass>
+				</configuration>
             </plugin>
         </plugins>
 	</build>
