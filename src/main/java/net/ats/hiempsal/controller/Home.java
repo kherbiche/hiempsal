@@ -27,7 +27,7 @@ public class Home {
 	 * @return the user information
 	 */
 	@GetMapping("/users/{id}")
-    public void getUser(@PathVariable("id") Long id) {
+    public void getUser(@PathVariable("id") int id) {
     }
 	
 	/**

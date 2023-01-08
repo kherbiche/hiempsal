@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////
 //
-//net.ats.hiempsal.Heimpsal.java main Class
-//
+// net.ats.hiempsal.Heimpsal.java main Class
+// 
 //////////////////////////////////////////////////
 
 package net.ats.hiempsal;
@@ -10,15 +10,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
+ * <code>Hiempsal<code> is bootstrap app class
  * 
  * @author L KHERBICHE
  * @since 0.0.1-RELEASE
  */
 @SpringBootApplication
-public class Heimpsal {
+public class Hiempsal {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Heimpsal.class, args);
+		SpringApplication.run(Hiempsal.class, args);
 	}
-
 }
