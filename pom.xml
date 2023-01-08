@@ -115,7 +115,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>    
-                	<mainClass>net.ats.hiempsal.Heimpsal</mainClass>
+                	<mainClass>net.ats.hiempsal.Hiempsal</mainClass>
 				</configuration>
             </plugin>
         </plugins>
