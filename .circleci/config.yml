@@ -6,9 +6,8 @@ executors:
 orbs:
   maven: circleci/maven@1.3.0
 workflows:
-  hiempsal_maven:
+  maven_test:
     jobs:
-      - maven/compile:
+      - maven/test:
           command: '-X compile'
           executor: java17
-
