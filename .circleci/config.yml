@@ -11,7 +11,4 @@ workflows:
       - maven/compile:
           command: '-X compile'
           executor: java17
-      - maven/package:
-          command: '-X package'
-          executor: java17
 
