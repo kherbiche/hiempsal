@@ -1,10 +1,12 @@
 ///////////////////////////////////////////////
 //
-// net.ats.hiempsal.model.User.java is a JPA
+// net.ats.hiempsal.user.User.java is a JPA
 // Entity
 //
 ///////////////////////////////////////////////
-package net.ats.hiempsal.model;
+package net.ats.hiempsal.user;
+
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,15 +14,20 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import net.ats.hiempsal.model.BaseEntity;
+import net.ats.hiempsal.model.Gender;
 
 /**
- * Simple JavaBean domain object representing a <code>User<code>.
+ * Simple business object & JPA Entity representing 
+ * a <code>User<code>.
  *
  * @author L KHERBICHE
  * @since 0.0.1-RELEASE
@@ -38,7 +45,8 @@ public class User extends BaseEntity {
 	@Column(name = "USER_NAME", nullable = false, length = 50)
 	private String name;
 	@Column(name = "BIRTH_DATE", nullable = false)
-	private String birthDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthDate;
 	@Column(name = "COUNTRY_OF_RESIDENCE", nullable = false, length = 50)
 	private String country;
 	@Column(name = "PHONE_NUMBER", nullable = true, length = 13)

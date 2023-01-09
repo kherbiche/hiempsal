@@ -1,10 +1,10 @@
 ///////////////////////////////////////////////
 //
-// net.ats.hiempsal.controller.Home.java is a
+// net.ats.hiempsal.user.UController.java is a
 // spring REST Controller
 //
 ///////////////////////////////////////////////
-package net.ats.hiempsal.controller;
+package net.ats.hiempsal.user;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/api")
-public class Home {
+public class UController {
 
 	/**
 	 * get user by id rest api
