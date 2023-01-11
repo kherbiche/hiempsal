@@ -6,6 +6,8 @@
 ///////////////////////////////////////////////
 package net.ats.hiempsal.user;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -29,7 +31,7 @@ public interface UserRepository extends Repository<User, Integer> {
 	 */
 	@Query("SELECT user FROM User user WHERE user.id =:id")
 	@Transactional(readOnly = true)
-	User findById(@Param("id") Integer id);
+	Optional<User> findById(@Param("id") Integer id);
 	
 	/**
 	 * Save an {@link User} to the data store, either inserting or updating it.
