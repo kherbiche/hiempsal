@@ -16,12 +16,7 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 import net.ats.hiempsal.model.BaseEntity;
 import net.ats.hiempsal.model.Gender;
 
@@ -32,12 +27,7 @@ import net.ats.hiempsal.model.Gender;
  * @author L KHERBICHE
  * @since 0.0.1-RELEASE
  */
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode(of= {"name","birthDate", "country", "phone"})
-@ToString(of= {"name","birthDate", "country", "phone", "gender"})
+@Data
 @Entity
 @Table(name = "USER_TABLE")
 public class User extends BaseEntity {
