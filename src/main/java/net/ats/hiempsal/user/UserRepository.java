@@ -33,7 +33,7 @@ public interface UserRepository extends Repository<User, Integer> {
 	
 	/**
 	 * Save an {@link User} to the data store, either inserting or updating it.
-	 * @param owner the {@link User} to save
+	 * @param user the {@link User} to save
 	 */
 	void save(User user);
 }

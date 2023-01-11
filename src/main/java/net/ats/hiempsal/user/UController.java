@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////
 package net.ats.hiempsal.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/api")
 public class UController {
+	@Autowired
+	private UserRepository repo;
 
 	/**
 	 * get user by id rest api
@@ -28,6 +31,7 @@ public class UController {
 	 */
 	@GetMapping("/users/{id}")
     public void getUser(@PathVariable("id") int id) {
+		System.out.println("#### #### "+repo.findById(id).toString());
     }
 	
 	/**
