@@ -1,3 +1,9 @@
+///////////////////////////////////////////////
+//
+// net.ats.hiempsal.user.UserService.java is
+// a java class
+// 
+///////////////////////////////////////////////
 package net.ats.hiempsal.user;
 
 import java.util.Optional;
@@ -19,6 +25,11 @@ public class UserService {
 		if(Boolean.FALSE.equals(op.isPresent()))
 			throw new ResourceException("USERnotFound", "User with id:"+id +" not Found", HttpStatus.NOT_FOUND);
 		return op.get();
+	}
+
+	public User saveUser(User u) {
+		emutils.getUserRepo().save(u);
+		return emutils.getUserRepo().save(u);
 	}
 
 }
