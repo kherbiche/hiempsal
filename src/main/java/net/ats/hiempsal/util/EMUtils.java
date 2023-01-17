@@ -32,7 +32,6 @@ public class EMUtils {
 	@Autowired
 	@Qualifier("h2dbEMF")
 	private EntityManagerFactory emfh2;
-	@Autowired
 	private static final ThreadLocal<EntityManager> threadLocalEnityManagerH2;
 	private EntityManager emh2;
 	static {

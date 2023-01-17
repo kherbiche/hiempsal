@@ -34,7 +34,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "h2dbEMF", transactionManagerRef = "h2dbTM", basePackages = "net.ats.hiempsal.user")
+@EnableJpaRepositories(entityManagerFactoryRef = "h2dbEMF", transactionManagerRef = "h2dbTM", basePackages = "net.ats.hiempsal", enableDefaultTransactions = false)
 public class H2DBConfig {
 	
 	@Bean("dataSource")
@@ -42,17 +42,17 @@ public class H2DBConfig {
 	public DataSource h2DataSource() {
 		return DataSourceBuilder.create().build();
 	}
-	@Bean
+	@Bean(name = "emfb")
 	public EntityManagerFactoryBuilder entityManagerFactoryBuilder() {
 	   return new EntityManagerFactoryBuilder(new HibernateJpaVendorAdapter(), new HashMap<>(), null);
 	}
 	@SuppressWarnings("unchecked")
 	@Bean(name = "h2dbEMF")
-	public LocalContainerEntityManagerFactoryBean h2dbEntityManagerFactory(EntityManagerFactoryBuilder builder) {  
+	public LocalContainerEntityManagerFactoryBean h2dbEntityManagerFactory(@Qualifier("emfb")EntityManagerFactoryBuilder builder) {  
 		return builder
 				.dataSource(h2DataSource())
 				.properties(hibernateProperties())
-				.packages("net.ats.hiempsal.user")
+				.packages("net.ats.hiempsal")
 				.persistenceUnit("h2dbPU")
 				.build();
 	}

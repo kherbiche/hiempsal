@@ -16,7 +16,7 @@ package net.ats.hiempsal.model;
  * @since 0.0.1-RELEASE
  */
 public enum Gender {
-	M("MALE"), F("FEMALE");
+	Male("Male"), Female("Female");
 
 	private String gender;
 

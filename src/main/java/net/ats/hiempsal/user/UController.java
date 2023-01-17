@@ -44,7 +44,7 @@ public class UController {
 	 * persist {@link User}
 	 * @return
 	 */
-	@PostMapping("/users/")
+	@PostMapping("/users")
     public ResponseEntity<User> postUser(@RequestBody User user) {
 		return new ResponseEntity<User>(service.saveUser(user), HttpStatus.CREATED);
     }
