@@ -13,11 +13,14 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import net.ats.hiempsal.model.BaseEntity;
 import net.ats.hiempsal.model.Gender;
+import net.ats.hiempsal.util.ValidAge;
+import net.ats.hiempsal.util.ValidCountry;
 
 /**
  * Simple business object & JPA Entity representing 
@@ -31,11 +34,15 @@ import net.ats.hiempsal.model.Gender;
 @Table(name = "USER_TABLE")
 public class User extends BaseEntity {
 
+	@NotBlank(message = "Name is mandatory")
 	@Column(name = "USER_NAME", nullable = false, length = 50)
 	private String name;
+	@ValidAge
 	@Column(name = "BIRTH_DATE", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthDate;
+	@NotBlank(message = "Country is mandatory")
+	@ValidCountry
 	@Column(name = "COUNTRY_OF_RESIDENCE", nullable = false, length = 50)
 	private String country;
 	@Column(name = "PHONE_NUMBER", nullable = true, length = 13)
@@ -84,5 +91,11 @@ public class User extends BaseEntity {
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + super.getId() + ", name=" + name + ", birthDate=" + birthDate + ", country=" + country + ", phone=" + phone
+				+ ", gender=" + gender + "]";
 	}
 }

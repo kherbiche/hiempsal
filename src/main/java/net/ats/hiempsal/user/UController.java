@@ -6,9 +6,13 @@
 ///////////////////////////////////////////////
 package net.ats.hiempsal.user;
 
+import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,9 +47,11 @@ public class UController {
 	/**
 	 * persist {@link User}
 	 * @return
+	 * @throws MethodArgumentNotValidException 
+	 * @throws ConstraintViolationException 
 	 */
 	@PostMapping("/users")
-    public ResponseEntity<User> postUser(@RequestBody User user) {
+    public ResponseEntity<User> postUser(@RequestBody @Valid User user) {
 		return new ResponseEntity<User>(service.saveUser(user), HttpStatus.CREATED);
     }
 }
