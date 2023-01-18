@@ -1,14 +1,15 @@
 package net.ats.hiempsal.user;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.util.SerializationUtils;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author L KHERBICHE
  */
 public class UserTest {
+	
 	@Test
 	void testSerialization() {
 		User u = new User();
