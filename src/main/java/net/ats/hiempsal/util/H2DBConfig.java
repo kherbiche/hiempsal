@@ -65,7 +65,7 @@ public class H2DBConfig {
 			private static final long serialVersionUID = 1L;
 			{
 				setProperty("hibernate.hbm2ddl.auto", "create-drop");
-				setProperty("hibernate.show_sql", "true");
+				setProperty("hibernate.show_sql", "false");
 				setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 			}
 		};
