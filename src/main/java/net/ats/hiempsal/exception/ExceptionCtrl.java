@@ -7,13 +7,21 @@
 package net.ats.hiempsal.exception;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
@@ -35,6 +43,24 @@ public class ExceptionCtrl extends ResponseEntityExceptionHandler {
         be.setErrorMessage(ex.getMessage());
         be.setRequestURL(req.getRequestURL().toString()); 
         return new ResponseEntity<BusinessException>(be, ex.getStatus());
+    }
+	@ExceptionHandler(ConstraintViolationException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	ValidationErrorResponse onConstraintValidationException(ConstraintViolationException e) {
+		ValidationErrorResponse error = new ValidationErrorResponse();
+		for (ConstraintViolation<?> violation : e.getConstraintViolations()) {
+			error.getViolations().add(new Violation(violation.getPropertyPath().toString(), violation.getMessage()));
+		}
+		return error;
+	}
+	@Override
+    public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+		ValidationErrorResponse error = new ValidationErrorResponse();
+		for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
+			error.getViolations().add(new Violation(fieldError.getField(), fieldError.getDefaultMessage()));
+		}
+        return new ResponseEntity<>(error, status);
     }
 	@ExceptionHandler(Exception.class)
     public ResponseEntity<BusinessException> unknowError(HttpServletRequest req, Exception ex) {
