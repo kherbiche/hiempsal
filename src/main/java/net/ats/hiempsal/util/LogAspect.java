@@ -10,11 +10,14 @@ package net.ats.hiempsal.util;
 import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,5 +47,15 @@ public class LogAspect {
 	public void afterCall(JoinPoint jp, Object res) {
 		log.info("After Call "+jp.toShortString());
 		log.info("return: "+res);
+	}
+	@Around("methodCall()")
+	public Object around(ProceedingJoinPoint jp) throws Throwable {
+		Object obj=null;
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start();
+		obj=jp.proceed();
+		stopWatch.stop();
+		log.info("*** processing time *** "+stopWatch.getTotalTimeSeconds()+" sec ***");
+		return obj;
 	}
 }
