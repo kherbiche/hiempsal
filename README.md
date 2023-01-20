@@ -6,12 +6,29 @@
 # hiempsal
 
 ## Table of Contents
-1. [General Info](#general-info)
+1. [General Info](#general info)
 2. [Technologies](#technologies)
-3. [Installation](#installation)
+3. [Running the App](#running)
+4. [License](#License)
 ### General Info
 ***
-Write down the general informations . 
-### Screenshot
-![Image text](https://www.united-internet.de/fileadmin/user_upload/Brands/Downloads/Logo_IONOS_by.jpg)
+These instructions will get you a copy of the project up and running on your local machine. Enjoy.
+
 ## Technologies
+***
+You need to install the softwares like:
+* [Java 8 or higher](https://www.oracle.com/fr/java/technologies/javase/javase8-archive-downloads.html): Version 8
+* [Apache Maven](https://maven.apache.org/download.cgi): Version
+
+## Running the App
+Download & unzip or clone this project
+```
+git clone https://github.com/kherbiche/hiempsal
+```
+With Terminal or cmd, navigate to the root of the project cloned or unziped then run:
+```
+start.sh or start.bat
+```
+
+## License
+[gpl](https://www.gnu.org/licenses/gpl-3.0.html)
