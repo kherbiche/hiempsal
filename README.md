@@ -6,9 +6,9 @@
 # hiempsal
 
 ## Table of Contents
-1. [General Info](#general info)
+1. [General Info](#general-info)
 2. [Technologies](#technologies)
-3. [Running the App](#running)
+3. [Running the App](#running-the-app)
 4. [License](#License)
 ### General Info
 ***
