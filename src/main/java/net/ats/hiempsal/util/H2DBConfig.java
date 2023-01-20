@@ -64,7 +64,7 @@ public class H2DBConfig {
 		Properties properties = new Properties() {
 			private static final long serialVersionUID = 1L;
 			{
-				setProperty("hibernate.hbm2ddl.auto", "create-drop");
+				setProperty("hibernate.hbm2ddl.auto", "none");
 				setProperty("hibernate.show_sql", "false");
 				setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 			}

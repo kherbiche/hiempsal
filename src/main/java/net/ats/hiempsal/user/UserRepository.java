@@ -48,7 +48,7 @@ public interface UserRepository extends org.springframework.data.repository.Repo
 	 * @return
 	 */
 	@Modifying
-	@Query(value = "INSERT INTO USER_TABLE(USER_NAME, BIRTH_DATE, COUNTRY_OF_RESIDENCE, PHONE_NUMBER, GENDER) VALUES"
-			+ "(:#{#user.name}, :#{#user.birthDate}, :#{#user.country}, :#{#user.phone}, :#{#user.gender.gender()})", nativeQuery = true)
+	@Query(value = "INSERT INTO USER_TABLE(ID, USER_NAME, BIRTH_DATE, COUNTRY_OF_RESIDENCE, PHONE_NUMBER, GENDER) VALUES"
+			+ "(NEXT VALUE FOR HIEM_SEQUENCE, :#{#user.name}, :#{#user.birthDate}, :#{#user.country}, :#{#user.phone}, :#{#user.gender.gender()})", nativeQuery = true)
 	int save(@Param("user")User user);
 }
