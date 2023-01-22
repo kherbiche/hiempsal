@@ -30,7 +30,9 @@ With Terminal or cmd, navigate to the root of the project cloned or unziped then
 start.sh or start.bat then callws.sh
 ```
 -The App runs on localhost:8088/api/users/
+
 -H2 Data Base Console on http://localhost:8088/console , with jdbc url: jdbc:h2:mem:hiempsaldb, login: sa
+
 -OpenAPI Doc on http://localhost:8088/swagger-ui/index.html
 
 ## License
